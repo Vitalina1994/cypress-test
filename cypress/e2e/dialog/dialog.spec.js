@@ -1,9 +1,9 @@
-describe('Dialog page', ()=>{
-  beforeEach(()=>{
+describe('Dialog page', ()=> {
+  beforeEach(()=> {
     cy.visit('/pages/modal-overlays/dialog')
   })
 
-  it('Dialog should display correct modal component', () => {
+  it('Dialog should display correct modal components', () => {
     cy.get('.appearance-filled').last().as('enterName')
     cy.get('@enterName').click()
 

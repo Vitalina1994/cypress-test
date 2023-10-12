@@ -1,5 +1,5 @@
-describe('Stepper page', ()=>{
-  beforeEach(()=>{
+describe('Stepper page', ()=> {
+  beforeEach(()=> {
     cy.visit('/pages/layout/stepper')
   })
 
