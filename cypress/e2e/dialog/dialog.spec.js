@@ -4,8 +4,8 @@ describe('Dialog page', ()=> {
   })
 
   it('Dialog should display correct modal components', ()=> {
-    cy.get('.appearance-filled').last().as('enterName')
-    cy.get('@enterName').click()
+    cy.get('.appearance-filled').last().as('enterNameButton')
+    cy.get('@enterNameButton').click()
 
     cy.get('ngx-dialog-name-prompt').as('modalWindow')
     cy.get('@modalWindow').should('be.visible')
