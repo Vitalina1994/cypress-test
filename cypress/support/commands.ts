@@ -35,3 +35,46 @@
 //     }
 //   }
 // }
+Cypress.Commands.add('addUser', function(id, firstName, lastName, userName, eMail, age) {
+  cy.visit('pages/tables/smart-table')
+
+  cy.get('th.ng2-smart-actions-title.ng2-smart-actions-title-add.ng-star-inserted').click()
+  cy.get('input-editor input[ng-reflect-name="id"]').type(id, {delay: 15})
+  cy.get('input-editor input[ng-reflect-name="firstName"]').type(firstName, {delay: 15})
+  cy.get('input-editor input[ng-reflect-name="lastName"]').type(lastName, {delay: 15})
+  cy.get('input-editor input[ng-reflect-name="username"]').type(userName, {delay: 15})
+  cy.get('input-editor input[ng-reflect-name="email"]').type(eMail, {delay: 15})
+  cy.get('input-editor input[ng-reflect-name="age"]').type(age, {delay: 15})
+  cy.get('i.nb-checkmark').click()
+
+  cy.get('table tr:nth-child(1) td:nth-child(2)').should('have.text', id)
+  cy.get('table tr:nth-child(1) td:nth-child(3)').should('have.text', firstName)
+  cy.get('table tr:nth-child(1) td:nth-child(4)').should('have.text', lastName)
+  cy.get('table tr:nth-child(1) td:nth-child(5)').should('have.text', userName)
+  cy.get('table tr:nth-child(1) td:nth-child(6)').should('have.text', eMail)
+  cy.get('table tr:nth-child(1) td:nth-child(7)').should('have.text', age)
+})
+
+Cypress.Commands.add('editUser', function(id, firstName, lastName, userName, email, age) {
+  cy.visit('pages/tables/smart-table')
+
+  cy.get('i.nb-edit').first().as('addActionsButton')
+  cy.get('@addActionsButton').click()
+
+  cy.get('input-editor input[ng-reflect-name="id"]').clear().type(id, {delay: 25})
+  cy.get('input-editor input[ng-reflect-name="firstName"]').clear().type(firstName, {delay: 25})
+  cy.get('input-editor input[ng-reflect-name="lastName"]').clear().type(lastName, {delay: 25})
+  cy.get('input-editor input[ng-reflect-name="username"]').clear().type(userName, {delay: 25})
+  cy.get('input-editor input[ng-reflect-name="email"]').clear().type(email, {delay: 25})
+  cy.get('input-editor input[ng-reflect-name="age"]').clear().type(age, {delay: 20})
+
+  cy.get('i.nb-checkmark').as('checkmarkActionsButton')
+  cy.get('@checkmarkActionsButton').click()
+
+  cy.get('table tr:nth-child(1) td:nth-child(2)').should('have.text', id)
+  cy.get('table tr:nth-child(1) td:nth-child(3)').should('have.text', firstName)
+  cy.get('table tr:nth-child(1) td:nth-child(4)').should('have.text', lastName)
+  cy.get('table tr:nth-child(1) td:nth-child(5)').should('have.text', userName)
+  cy.get('table tr:nth-child(1) td:nth-child(6)').should('have.text', email)
+  cy.get('table tr:nth-child(1) td:nth-child(7)').should('have.text', age)
+})
