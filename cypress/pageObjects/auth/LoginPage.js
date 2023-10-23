@@ -22,9 +22,4 @@ export class LoginPage extends BasePage {
   clickLoginButton(){
     cy.get(this._loginBtnSelector).click()
   }
-
-  login(email, password, rememberMe){
-    this.fill(email, password, rememberMe)
-    this.clickLoginButton()
-  }
 }
