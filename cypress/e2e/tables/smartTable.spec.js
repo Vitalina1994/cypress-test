@@ -4,6 +4,6 @@ describe('Smart table', ()=> {
   })
 
   it('Edited user should have correct information',() => {
-    cy.editUser('04','Mary', 'Neuman', 'MNeuman', 'vitalina.zubko@mev.com', '16')
+    cy.editUser('04','Mary', 'Neuman', 'MNeuman', 'vitalina.zubko.new@mev.com', '16')
   })
 })
