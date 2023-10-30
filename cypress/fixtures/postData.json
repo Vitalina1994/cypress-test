@@ -1,0 +1,7 @@
+{
+  "validPostData": {
+    "name": "New Comment",
+    "email": "new.comment@dispostable.com",
+    "body": "This is the body of the new comment."
+  }
+}
