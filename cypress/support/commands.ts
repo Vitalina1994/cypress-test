@@ -82,3 +82,21 @@ Cypress.Commands.add('editUser', function(id, firstName, lastName, userName, ema
   cy.get('table tr:nth-child(1) td:nth-child(6)').should('have.text', email)
   cy.get('table tr:nth-child(1) td:nth-child(7)').should('have.text', age)
 })
+Cypress.Commands.add(
+  'api',
+  { prevSubject: false },
+  (method, endpoint, body = null, options = {}) => {
+    const requestOptions = {
+      method,
+      url: `https://jsonplaceholder.typicode.com/${endpoint}`,
+      body,
+      ...options,
+    };
+
+    if (typeof requestOptions.failOnStatusCode === 'undefined') {
+      requestOptions.failOnStatusCode = true
+    }
+
+    return cy.request(requestOptions)
+  },
+);
